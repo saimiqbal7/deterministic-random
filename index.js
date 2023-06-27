@@ -1,12 +1,15 @@
-var MersenneTwister = require('mersenne-twister');
+const MersenneTwister = require('mersenne-twister');
 
-function getPredictableRandomNumber(seed) {
-  var mt = new MersenneTwister(seed);
-  return mt.random();
+function getPredictableRandomNumber(seed, submissions) {
+  const mt = new MersenneTwister(seed);
+  const num = mt.random();
+  const rand = Math.floor(num*submissions)
+  return rand;
 }
 
-// Usage
-var seed = 24;
-var randomNumber = getPredictableRandomNumber(seed);
+
+const seed = 4559; // ROUND NUMBER OF THE TASK
+const submissions = 10;  // TOTAL SUBMISSIONS
+const randomNumber = getPredictableRandomNumber(seed, submissions);
 
 console.log(randomNumber);
